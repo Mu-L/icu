@@ -97,17 +97,20 @@ The optional four-letter script code follows the language code. If specified, it
 should be a valid script code as listed on the 
 [Unicode ISO 15924 Registry](https://www.unicode.org/iso15924/iso15924-codes.html).
 
-### Country code
+### Region code
 
 There are often different language conventions within the same language. For
 example, Spanish is spoken in many countries in Central and South America but
 the currencies are different in each country. To allow for these differences
-among specific geographical, political, or cultural regions, locales are
-specified by two-letter, uppercase codes. For example, "ES" represents Spain and
-"MX" represents Mexico. The two letter country code uses the
-[ISO-3166](https://www.iso.org/iso-3166-country-codes.html) standard.
-
-Java supports two letter country codes that uses ISO-3166 and UN M.49 code.
+among specific geographical, political, or cultural regions, locales follow
+the [BCP 47](https://www.rfc-editor.org/info/bcp47) convention of specifying
+regions by using two-letter-uppercase
+[ISO-3166](https://www.iso.org/iso-3166-country-codes.html) or three-digit
+[UN M.49](https://unstats.un.org/unsd/methodology/m49/) codes. For example,
+"ES" represents Spain, "MX" represents Mexico, and "419" represents Latin America
+and the Caribbean. For more information, please see the
+[unicode_region_subtag](https://www.unicode.org/reports/tr35/#unicode_region_subtag_validity)
+section of the [Locale Data Markup Language](https://www.unicode.org/reports/tr35/).
 
 ### Variant code
 
@@ -138,7 +141,7 @@ Keyword | Possible Values | Description
 --------|-----------------|------------
 calendar | A calendar specifier such as "gregorian", "islamic", "chinese", "islamic-civil", "hebrew", "japanese", or "buddhist". See the Key/Type Definitions table in the [Locale Data Markup Language](http://www.unicode.org/reports/tr35/) for a list of recognized values. | If present, the calendar keyword specifies the calendar type that the `Calendar` factory methods create. See the calendar locale and keyword handling section (§) of the [Calendar Classes](../datetime/calendar/index.md) chapter for details.
 collation | A collation specifier such as "phonebook", "pinyin", "traditional", "stroke", "direct", or "posix". See the Key/Type Definitions table in the [Locale Data Markup Language](http://www.unicode.org/reports/tr35/) for a list of recognized values. | If present, the collation keyword modifies how the collation service searches through the locale data when instantiating a collator. See the collation locale and keyword handling section (§) of the [Collation Services Architecture](../collation/architecture.md) chapter for details.
-currency | Any standard three-letter currency code, such as "USD" or "JPY". See the LocaleExplorer [currency list](http://demo.icu-project.org/icu-bin/locexp?_=en&SHOWCurrencies=1#Currencies) for a list of currently recognized currency codes. | If present, the currency keyword is used by `NumberFormat` to determine the currency to use to format a currency value, and by `ucurr_forLocale()` to specify a currency.
+currency | Any standard three-letter currency code, such as "USD" or "JPY". See the LocaleExplorer [currency list](https://icu4c-demos.unicode.org/icu-bin/locexp?_=en&SHOWCurrencies=1#Currencies) for a list of currently recognized currency codes. | If present, the currency keyword is used by `NumberFormat` to determine the currency to use to format a currency value, and by `ucurr_forLocale()` to specify a currency.
 numbers | A numbering system specifier such as "latn", "arab", "deva", "hansfin" or "thai". See the Key/Type Definitions table in the [Locale Data Markup Language](http://www.unicode.org/reports/tr35/) for a list of recognized values. | If present, the numbers keyword is used by `NumberFormat` to determine the numbering system to be used for formatting and parsing numbers. The numbering system defines the set of digits used for decimal formatting, such as "latn" for western (ASCII) digits, or "thai" for Thai digits. The numbering system may also define complex algorithms for number formatting, such as "hansfin" for simplified Chinese numerals using financial ideographs.
 
 If any of these keywords is absent, the service requesting it will typically use
@@ -150,12 +153,12 @@ default behavior.
 
 Locale ID | Language | Script | Country | Variant | Keywords | Definition
 ----------|----------|--------|---------|---------|----------|-----------
-en_US | en | | US | | | English, United States of America. <br>Browse in [LocaleExplorer](http://demo.icu-project.org/icu-bin/locexp?_=en_US)
-en_IE_PREEURO | en | | IE | | | English, Ireland. <br>Browse in [LocaleExplorer](http://demo.icu-project.org/icu-bin/locexp?_=en_IE_PREEURO)
-en_IE@currency=IEP | en | | IE | | currency=IEP | English, Ireland with Irish Pound. <br>Browse in [LocaleExplorer](http://demo.icu-project.org/icu-bin/locexp?_=en_IE@currency=IEP)
-eo | eo | | | | | Esperanto. <br>Browse in [LocaleExplorer](http://demo.icu-project.org/icu-bin/locexp?_=eo)
-fr@collation=phonebook;calendar=islamic-civil | fr | | | | collation=phonebook <br>calendar=islamic-civil | French (Calendar=Islamic-Civil Calendar, Collation=Phonebook Order). <br>Browse in [LocaleExplorer](http://demo.icu-project.org/icu-bin/locexp?_=fr@collation=phonebook;calendar=islamic-civil)
-sr_Latn_RS_REVISED@currency=USD | sr | Latn | RS | REVISED | currency=USD | Serbian (Latin, Yugoslavia, Revised Orthography, Currency=US Dollar) <br>Browse in [LocaleExplorer](http://demo.icu-project.org/icu-bin/locexp?d_=en&_=sr_Latn_RS_REVISED@currency=USD)
+en_US | en | | US | | | English, United States of America. <br>Browse in [LocaleExplorer](https://icu4c-demos.unicode.org/icu-bin/locexp?_=en_US)
+en_IE_PREEURO | en | | IE | | | English, Ireland. <br>Browse in [LocaleExplorer](https://icu4c-demos.unicode.org/icu-bin/locexp?_=en_IE_PREEURO)
+en_IE@currency=IEP | en | | IE | | currency=IEP | English, Ireland with Irish Pound. <br>Browse in [LocaleExplorer](https://icu4c-demos.unicode.org/icu-bin/locexp?_=en_IE@currency=IEP)
+eo | eo | | | | | Esperanto. <br>Browse in [LocaleExplorer](https://icu4c-demos.unicode.org/icu-bin/locexp?_=eo)
+fr@collation=phonebook;calendar=islamic-civil | fr | | | | collation=phonebook <br>calendar=islamic-civil | French (Calendar=Islamic-Civil Calendar, Collation=Phonebook Order). <br>Browse in [LocaleExplorer](https://icu4c-demos.unicode.org/icu-bin/locexp?_=fr@collation=phonebook;calendar=islamic-civil)
+sr_Latn_RS_REVISED@currency=USD | sr | Latn | RS | REVISED | currency=USD | Serbian (Latin, Yugoslavia, Revised Orthography, Currency=US Dollar) <br>Browse in [LocaleExplorer](https://icu4c-demos.unicode.org/icu-bin/locexp?d_=en&_=sr_Latn_RS_REVISED@currency=USD)
 
 
 ### Default Locales
@@ -388,11 +391,7 @@ and `Locale::createCanonical`. The latter API exists in both C++ and Java.
     es@collation=traditional, hi__DIRECT => hi@collation=direct, zh_TW_STROKE =>
     zh_TW@collation=stroke, zh__PINYIN => zh@collation=pinyin.
 
-9.  Variants specifying a calendar are remapped to calendar keyword specifiers,
-    as follows: ja_JP_TRADITIONAL => ja_JP@calendar=japanese, th_TH_TRADITIONAL
-    => th_TH@calendar=buddhist.
-
-10. Special case: C => en_US_POSIX.
+9.  Special case: C => en_US_POSIX.
 
 Certain other operations are not performed by either level 1 or level 2
 canonicalization. These are listed here for completeness.

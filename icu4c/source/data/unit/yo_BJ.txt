@@ -11,8 +11,16 @@ yo_BJ{
             1024p7{"sɛ́bì {0}"}
         }
         concentr{
+            item{
+                dnam{"àwɔ́n ohun"}
+            }
             permille{
                 other{"{0} ìdákan nínú ɛgbɛ̀rún"}
+            }
+        }
+        consumption{
+            mile-per-gallon-imperial{
+                dnam{"maili ninu ami galɔɔnu kan"}
             }
         }
         digital{
@@ -67,50 +75,46 @@ yo_BJ{
                 other{"ɔ̀rúndún {0}"}
             }
             day{
-                dnam{"ɔjɔ́"}
                 other{"ɔj {0}"}
-                per{"{0}/ɔj"}
             }
             decade{
-                dnam{"ɛ̀wádùn"}
                 other{"ɛ̀wádùn {0}"}
             }
-            minute{
-                dnam{"ìsh"}
-                other{"{0} ìsh"}
-                per{"{0}/ìsh"}
-            }
-            month{
-                dnam{"oshù"}
-                other{"{0} oshù"}
-                per{"{0}/oshù"}
+            night{
+                dnam{"àwɔn alɛ́"}
+                other{"àwɔn alɛ́ {0}"}
+                per{"{0}/alɛ́"}
             }
             second{
-                dnam{"ìsh àáy"}
                 other{"{0}ìsh àáy"}
                 per{"{0}/ìsh àáy"}
             }
             week{
-                dnam{"ɔsh"}
-                other{"{0} ɔsh"}
                 per{"{0}/ɔsh"}
             }
             year{
                 dnam{"ɔ̀dún"}
-                other{"{0} ɔd"}
                 per{"{0} ɔd"}
             }
         }
-        graphics{
-            dot{
-                dnam{"dɔ́ɔ̀tì"}
-                other{"{0} dɔ́ɔ̀tì"}
+        force{
+            kilowatt-hour-per-100-kilometer{
+                dnam{"àwɔ́n wákàtí kílówáàtì ní kìlómítà ɔgɔ́rùn"}
+                other{"{0} àwɔ́n wákàtí kílówáàtì ní kìlómítà ɔgɔ́rùn"}
             }
         }
         length{
             earth-radius{
                 dnam{"ìdinwɔ̀n ayé"}
                 other{"{0} ìdinwɔ̀n ayé"}
+            }
+            fathom{
+                dnam{"fátɔ́ɔ̀mu"}
+                other{"{0} fátɔ́ɔ̀mù"}
+            }
+            furlong{
+                dnam{"àwɔn fɔ́lɔ́ɔ̀ngì"}
+                other{"{0} àwɔn fɔ́lɔ́ɔ̀ngì"}
             }
         }
         light{
@@ -123,55 +127,72 @@ yo_BJ{
                 other{"{0} lumɛ́ɛ̀nì"}
             }
         }
+        mass{
+            tonne{
+                dnam{"mɛtiriki tɔɔnu"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"ìmɔ́lɛ̀"}
+                other{"{0} ìmɔ́lɛ̀"}
+            }
+        }
         volume{
+            bushel{
+                dnam{"búsɛ́ɛ̀li"}
+                other{"{0} búsɛ́ɛ̀li"}
+            }
+            cup{
+                dnam{"àwɔn ife"}
+            }
             dessert-spoon{
-                dnam{"àmì shíbí oúnjɛ́ kékeré"}
-                other{"{0} àmì shíbí oúnjɛ́ kékeré"}
+                dnam{"àwɔn shíbí oúnjɛ́ kékeré"}
+                other{"àwɔn {0} àmì shíbí oúnjɛ́ kékeré"}
             }
             dessert-spoon-imperial{
                 dnam{"shíbí oúnjɛ kékeré"}
-                other{"{0} àmì oúnjɛ kékeré"}
-            }
-            drop{
-                dnam{"dírɔ́pù"}
-                other{"{0} dírɔ́pù"}
-            }
-            pinch{
-                dnam{"píńshì"}
-                other{"{0} píńshì"}
             }
         }
     }
     unitsNarrow{
         duration{
             day{
-                dnam{"ɔjɔ́"}
                 other{"ɔj {0}"}
             }
             minute{
-                dnam{"ìsh"}
                 other{"{0}/ìsh"}
             }
-            month{
-                dnam{"oshù"}
-                other{"{0} oshù"}
-            }
-            second{
-                dnam{"ìsh àáy"}
-                other{"{0} ìsh àáy"}
+            night{
+                dnam{"àwɔn alɛ́"}
+                other{"àwɔn alɛ́{0}"}
+                per{"{0}/alɛ́"}
             }
             week{
                 dnam{"ɔshɛ́"}
-                other{"{0} ɔsh"}
+                per{"{0}/ɔ̀shɛ̀"}
             }
-            year{
-                dnam{"ɔd"}
-                other{"{0} ɔd"}
+        }
+        length{
+            fathom{
+                dnam{"fatɔ́"}
             }
         }
         light{
-            lumen{
-                other{"{0} Lúmɛ́nì"}
+            lux{
+                dnam{"lɔ́s"}
+            }
+        }
+        speed{
+            light-speed{
+                dnam{"ìmɔ́lɛ̀"}
+                other{"{0}ìmɔ́lɛ̀"}
+            }
+        }
+        volume{
+            bushel{
+                dnam{"búsɛ́li"}
+                other{"{0}búsɛ́ɛ̀li"}
             }
         }
     }
@@ -179,6 +200,9 @@ yo_BJ{
         concentr{
             permille{
                 dnam{"ìdákan nínú ɛgbɛ̀rún"}
+            }
+            permillion{
+                dnam{"ara/milíɔ̀nù"}
             }
         }
         digital{
@@ -210,6 +234,11 @@ yo_BJ{
                 other{"{0} oshù"}
                 per{"{0}/oshù"}
             }
+            night{
+                dnam{"àwɔn alɛ́"}
+                other{"àwɔn alɛ́ {0}"}
+                per{"{0}/alɛ́"}
+            }
             second{
                 dnam{"ìsh àáy"}
                 other{"{0} ìsh àáy"}
@@ -226,6 +255,12 @@ yo_BJ{
                 per{"{0}/ɔd"}
             }
         }
+        force{
+            kilowatt-hour-per-100-kilometer{
+                dnam{"KWh lɔ́rí 100km"}
+                other{"{0} KWh lɔ́rí 100km"}
+            }
+        }
         graphics{
             dot{
                 dnam{"dɔ́ɔ̀tì"}
@@ -237,14 +272,33 @@ yo_BJ{
                 dnam{"àmì ìdínwɔ̀n ayé"}
                 other{"{0} àmì ìdínwɔ̀n ayé"}
             }
+            fathom{
+                dnam{"fátɔ́mù"}
+            }
+            furlong{
+                dnam{"fɔ́lɔ́ɔ̀ngì"}
+                other{"{0} fɔ́"}
+            }
         }
         light{
+            candela{
+                dnam{"kandɛ́là"}
+            }
             lumen{
                 dnam{"àmì lumɛ́ɛ̀nì"}
                 other{"{0} Lúmɛ́nì"}
             }
         }
+        speed{
+            light-speed{
+                dnam{"ìmɔ́lɛ̀"}
+                other{"{0} ìmɔ́lɛ̀"}
+            }
+        }
         volume{
+            bushel{
+                dnam{"Búsɛ́ɛ̀li"}
+            }
             dessert-spoon{
                 dnam{"shíbí oúnjɛ́ kékeré"}
                 other{"{0} shíbí oúnjɛ́ kékeré"}

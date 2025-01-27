@@ -49,7 +49,7 @@ License & terms of use: http://www.unicode.org/copyright.html
 5.  make doc
 6.  Follow instructions in
     [tools/release/java/readme.txt](https://htmlpreview.github.io/?https://github.com/unicode-org/icu/blob/main/tools/release/java/readme.txt)
-    to generate API status change report.
+    to generate the API status change report.
 7.  Make sure that ICU headers work with U_HIDE_DRAFT_API and other such
     switches.
 8.  Verify that U_DRAFT and U_STABLE match the @draft and @stable tags (same for
@@ -67,15 +67,15 @@ License & terms of use: http://www.unicode.org/copyright.html
 
 Update the API documentation to have correct @draft/@stable/@deprecated labels.
 See the [User Guide, ICU Architectural Design, ICU API
-compatibility](http://userguide.icu-project.org/design#TOC-ICU-API-compatibility).
+compatibility](https://unicode-org.github.io/icu/userguide/icu/design#icu-api-compatibility).
 
 On ICU4J, run
 [com.ibm.icu.dev.tool.docs.CheckTags](https://github.com/unicode-org/icu/blob/main/icu4j/tools/build/src/com/ibm/icu/dev/tool/docs/CheckTags.java)
-(see file for instructions). This requires a JDK with javadoc available. The
+(see file for instructions). This requires a JDK with javadoc available, i.e, JDK8. The
 tool will need to change to reflect the release number to search for.
 
-To check the API status changes, run the ant target "apireport" to generate the
-report since the previous official release.
+To check the API status changes, run the script `releases_tools/api_reports.sh` to generate the
+report of updates since the previous official release. The resulting file is found in target/icu4j_compare_XX_YY.html.
 
 Make sure **@internal APIs** are also marked as @deprecated:
 
@@ -116,28 +116,27 @@ Andy's method (from email 2019-sep-05):
 ### **ICU4J**
 
 1.  Create a new GitHub branch.
-2.  Run next ant target: `$ ant draftAPIsTSV`
-3.  This **ant** target generates a tab-separated values file at
-    icu4j/out/draftAPIs.tsv.
-4.  Import the TSV file to Google spread sheet - for example, [ICU4J 61 Draft
+2.  In directory icu/icu4j, run this script: `releases_tools/api_reports.sh`
+3.  This script generates a tab-separated values file at target/draftAPIs.tsv.
+4.  Import the TSV file to Google spread sheet - for example, [ICU4J 74 Draft
     API
     Promotion](https://docs.google.com/spreadsheets/d/135RDyY6cWKBBvNuVE9ne8HfsItZu_CvLh47hKjr3UqM/edit#gid=1384666589).
     *   Create the spreadsheet in the shared ***ICU Projects*** folder.
-5.  Review all APIs introduced in 2 releases ago or older. For example, 59 or
-    older for ICU 61 release.
+5.  Review all APIs introduced in 2 releases ago or older. For example, 72 or
+    older for ICU 74 release.
     *   Any API added 2 or more releases ago is a candidate for promotion.
     *   Newer APIs should be left in @draft state.
 6.  Check each API entry has a corresponding approved API proposal. For example,
-    [ICU 59 API proposal
+    [ICU 72 API proposal
     status](https://docs.google.com/document/d/12dHTG3e9WXb7C1Xdc2bcXE0BK8f6IoufoUAPcz4ZT2I/edit).
     Note: An API proposal might have been created before the API proposal doc
     version, so you may need to look at older version of API proposal status
     doc.
 7.  Mark APIs proposed for promotion, and add note in the spread sheet.
 8.  Update API comments in ICU4J source code. In this case, @draft is replaced
-    with @stable (do not change ICU version, for example, "@draft ICU 59" will
-    be changed to "@stable ICU 59").
-9.  Run next ant target to generate an API change report html: `$ ant apireport`
+    with @stable (do not change ICU version, for example, "@draft ICU 72" will
+    be changed to "@stable ICU 72").
+9.  Now, rerun target to generate an API change report html: `releases_tools/api_reports.sh`.
 10. Review the report, sent the report file and the link of the spread sheet to
     ICU technical committee members for review.
 11. Once ICU TC approves the proposed change, create a pull request (PR), wait
@@ -166,10 +165,12 @@ This work is done in the root of icu4j:
 1.  Make sure JAVA_HOME is set to JDK 8. This report creation fails with JDK 11.
     For example, in Linux:
     *   `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64`
-2.  Then run ant task "clean" and "apireport" at <icu4j_root>:
-    *   `ant clean apireport`
+2.  Now in `<icu4j_root>`, create a change report:
+    *   `mvn clean`
+    *   `releases_tools/api_reports.sh`
+    *   # Note that some errors may be shown. This is normal.
 3.  Above will produce API change report file
-    <code><icu4j_root>/<b>out</b>/icu4j_compare_xxx_yyy.html</code>
+    `<icu4j_root>/<b>target</b>/icu4j_compare_xxx_yyy.html`
 4.  Make sure there are any new doc tag errors are reported. (As of ICU 4.4,
     ArabicShaping constants do not have proper tags - otherwise, clean)
 5.  Copy generated report file to `<icu4j_root>/APIChangeReport.html` and check
@@ -179,11 +180,6 @@ Once official release version is shipped, we need to keep API signature
 information file for next iteration. This is not done for milestone releases,
 only after the final official release.
 
-1.  Run ant task "gatherapi" at <icu4j_root>
-2.  Above will produce API signature information file
-    <icu4j_root>/out/icu4jxx.api2.gz
-3.  Copy icu4jxxapi2.gz to <icu4j_root>/tools/build and add it to the repository
-
 ---
 
 ## Check in API signature data file (ICU4J)
@@ -192,12 +188,13 @@ Once APIs are frozen for a reference release, we should check in the API
 signature data file into the repository. The data file will be used for future
 API change report.
 
-1.  Run ant task "gatherapi" at <icu4j_root>
-2.  The output file icu4j<ver>.api3.gz is created in <icu4j_root>/out directory.
-3.  Copy the output .gz file to <icu4j_root>/tools directory and check in the
+1.  Run `releases_tools/api_reports.sh` at `<icu4j_root>`
+2.  Resolve any warnings before proceeding.
+3.  The output file `icu4j<ver>.api3.gz` is created in `<icu4j_root>/out` directory.
+4.  Copy the output .gz file to `<icu4j_root>/tools/build` directory and check in the
     file to the repository.
-4.  You may delete very old versions of the API signature files. Keeping 10
-    versions to the latest should be good enough.
+5.  You may delete very old versions of the API signature files. We keep last 5
+    versions including a new release and ICU_3.6.
 
 Note: This task is only necessary for reference releases, because we won't
 change public APIs in maintenance releases. The API signature file for an ICU4J
@@ -247,7 +244,7 @@ Same for `@obsolete` & <code>#ifndef U_HIDE_<b>OBSOLETE</b>_API</code> ..
 
 <span style="background-color:yellow">For more details (and cautions) see the
 Coding Guidelines section [C/C++ Hiding Un-@stable
-APIs](http://userguide.icu-project.org/dev/codingguidelines#TOC-C-C-Hiding-Un--stable-APIs).</span>
+APIs](https://unicode-org.github.io/icu/userguide/dev/codingguidelines#cc-hiding-un-stable-apis).</span>
 
 ### Task
 
@@ -311,7 +308,7 @@ and make sure ICU4J adequately covers the JDK API for the classes we replicate.
 
 ---
 
-## Build API documentations
+## Build API documentation
 
 ### **ICU4C**
 
@@ -321,7 +318,7 @@ javadoc files. Create icu4c-X_X_X-docs.zip
 **Note: for ICU4C 49m2 or later, requires Doxygen 1.7.5.1 or later ( see
 [ICU-8862](https://unicode-org.atlassian.net/browse/ICU-8862) )**
 
-#### Steps:
+#### Create the ICU4C docs zip file:
 
 1.  Go to .../icu4c/source
 2.  Generate the API document pages:<br>
@@ -329,73 +326,84 @@ javadoc files. Create icu4c-X_X_X-docs.zip
 3.  The generated API docs are in <path>/icu4c/source/doc/html/<br>
     `cd <path>/icu4c/source/doc/html/`
 4.  Create a zip file, e.g.,<br>
-    `zip /tmp/icu4c641 * # '641' needs to be replaced by the respective release label.`
-5.  ~~Upload this zip file to the GitHub release page. For the live API docs, see below.~~
+    `tar cvfz /tmp/icu4c72rc.tar.gz * # Note: label the file apropriately for the release.
+5.  Edit [README.md in icu-docs](https://github.com/unicode-org/icu-docs/blob/main/README.md).
+6.  Update the table under "API docs" at the top of README.md with the new version in column "C" in row "Dev" for the release candidate or "Released" for the final release.
+7.  Add the updated README.md to the pull request with the new API documentation.
 
-DRAFT:
 
-5.  Follow directions in [How to update ICU docs](https://unicode-org.github.io/icu-docs/HOWTO-Update.html)
+#### Create a PR for ICU4C docs using the docs zip file
 
-    a. First, bring main branch of icu-docs fork up to date.
+1.  Follow directions in [How to update ICU docs](https://unicode-org.github.io/icu-docs/HOWTO-Update.html)
 
-    b. Copy the zip file to personal fork of icu-docs in apidoc/released/icu4c
-    (or dev if not a release)
+    a. First, bring the `main` branch of your icu-docs local copy up to date.
 
-    c. Unzip the file, replacing all documentation
+    b. Create and switch to a feature branch based of the latest `main`.  Ex: `git checkout -b ICU-<TICKET-NUMBER>`.
 
-    d. Remove the zip file
+    c. Go to the directory for the version of interest, either
+       `apidoc/dev/icu4c` (release candicate) or `apidoc/released/icu4c`
+       (general release.)
 
-    e. \`git add .\`
+    d. Be sure that you are in the right directory. Then, remove all the files
+        in this directory, e.g., `rm -rf *`. (Remember "git restore" is a good friend!)
+     
+    e. Unzip the tar file from above, replacing all documentation. Ex: `tar xvfz /tmp/icu4c72rc.tar.gz`
 
-    f. \`git commit -m "ICU-<TICKET-NUMBER> Update ICU4C API reference docs for
-    XX.Y"<br>
-    Example: ["ICU-21546 Update ICU4C API reference docs for 69.1"](https://github.com/unicode-org/icu-docs/pull/25)
+    e. Remove the zip file if it's in the folder.
 
-    g. \`git push origin main\`
+    f. `git add .`.  Note that this may remove some old files. That's correct behavior.
 
-    h. Create Pull Request at personal github fork for icu-docs from main into
-    unicode-ort/icu-docs main branch
+    h. `git commit -m "ICU-<TICKET-NUMBER> Update ICU4C API reference docs for
+    XX.Y"`<br>
+    Example: [ICU-21546 Update ICU4C API reference docs for 69.1](https://github.com/unicode-org/icu-docs/pull/25)
 
-    i. Request review
+    i. `git push origin ICU-<TICKET-NUMBER>`
 
-Note: This is also referenced below '[Upload API documentations](docs.md)' for how to make the API docs public.
+    j. Create Pull Request from your personal github fork of icu-docs from your newly-pushed branch `ICU-<TICKET-NUMBER>` with a destination of
+    the `unicode-org/icu-docs` repo's `main` branch
+
+    k. Request a review and submit the PR when approved.
+
+Note: This is also referenced below [Upload API documentations](docs.md#upload-api-documentations) for how to make the API docs public.
 
 ### ICU4J
 
 **Note:** JCite must be installed for building ICU4J documentation:
-<http://site.icu-project.org/setup/java/ant#TOC-Building-ICU4J-API-Reference-Document-with-JCite>
+<https://icu.unicode.org/setup/java/ant#TOC-Building-ICU4J-API-Reference-Document-with-JCite>
 
 Build the API documentation pages for the new release:
 
 ```
-ant releaseDocs
+cd icu4j
+releases_tools/github_release.sh
 ```
+The API documentation will be found in targets/github_release/
 
-#### Alternative method:
+Next, update the documents for this version:
+* Copy the `icu4j-<version>-fulljavadoc.jar` to the to `icu-docs/apidoc` directory, either dev (for release candidates) or released (for public distribution).
+* Unzip the `icu4j-<version>-fulljavadoc.jar` in that directory.
+* Verify that the documentation is updated, then remove the .jar file.
+* Update the file README.md for either the Released or the Dev line with the new version.
+* Use `git add .` then create a github commit with the ICU issue for this version, e.g., [Pull request #58](https://github.com/unicode-org/icu-docs/pull/58).
+* Create the pull request, obtain a review, and merge when all is OK.
 
-**Note:** JCite must be installed for building ICU4J documentation:
-<http://site.icu-project.org/setup/java/ant#TOC-Building-ICU4J-API-Reference-Document-with-JCite>
 
-Use the release target
-
-```
-ant releaseVer
-```
-
-which generate all release files.
 
 *   Upload the output files including icu4j-docs.jar to the release page first,
 *   Then update the live API docs from the generated docs.jar.
 
-See '[Upload API documentations](docs.md)' below for how to make the API docs public.
+See [Upload API documentations](docs.md#upload-api-documentations) below for how to make the API docs public.
 
 ### Upload API documentations
 
 See <https://unicode-org.github.io/icu-docs/HOWTO-Update.html> for instructions
 to upload to <https://unicode-org.github.io/icu-docs/>
 
----
-
+#### Update table of API docs:
+1. Edit [README.md in icu-docs](https://github.com/unicode-org/icu-docs/blob/main/README.md).
+2. Update the table under "API docs" at the top of README.md with the new version in column "J" in row "Dev" for the release candidate or "Released" for the final release.
+3. Add the updated README.md to the pull request with the new API documentation.
+    
 ### Update the Readme.html for GA
 
 If there are any last second changes:

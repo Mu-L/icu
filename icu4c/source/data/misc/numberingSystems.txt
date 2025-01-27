@@ -88,6 +88,11 @@ numberingSystems:table(nofallback){
             desc{"０１２３４５６７８９"}
             radix:int{10}
         }
+        gara{
+            algorithmic:int{0}
+            desc{"𐵀𐵁𐵂𐵃𐵄𐵅𐵆𐵇𐵈𐵉"}
+            radix:int{10}
+        }
         geor{
             algorithmic:int{1}
             desc{"%georgian"}
@@ -116,6 +121,11 @@ numberingSystems:table(nofallback){
         gujr{
             algorithmic:int{0}
             desc{"૦૧૨૩૪૫૬૭૮૯"}
+            radix:int{10}
+        }
+        gukh{
+            algorithmic:int{0}
+            desc{"𖄰𖄱𖄲𖄳𖄴𖄵𖄶𖄷𖄸𖄹"}
             radix:int{10}
         }
         guru{
@@ -193,6 +203,11 @@ numberingSystems:table(nofallback){
             desc{"꤀꤁꤂꤃꤄꤅꤆꤇꤈꤉"}
             radix:int{10}
         }
+        kawi{
+            algorithmic:int{0}
+            desc{"𑽐𑽑𑽒𑽓𑽔𑽕𑽖𑽗𑽘𑽙"}
+            radix:int{10}
+        }
         khmr{
             algorithmic:int{0}
             desc{"០១២៣៤៥៦៧៨៩"}
@@ -201,6 +216,11 @@ numberingSystems:table(nofallback){
         knda{
             algorithmic:int{0}
             desc{"೦೧೨೩೪೫೬೭೮೯"}
+            radix:int{10}
+        }
+        krai{
+            algorithmic:int{0}
+            desc{"𖵰𖵱𖵲𖵳𖵴𖵵𖵶𖵷𖵸𖵹"}
             radix:int{10}
         }
         lana{
@@ -288,6 +308,16 @@ numberingSystems:table(nofallback){
             desc{"၀၁၂၃၄၅၆၇၈၉"}
             radix:int{10}
         }
+        mymrepka{
+            algorithmic:int{0}
+            desc{"𑛚𑛛𑛜𑛝𑛞𑛟𑛠𑛡𑛢𑛣"}
+            radix:int{10}
+        }
+        mymrpao{
+            algorithmic:int{0}
+            desc{"𑛐𑛑𑛒𑛓𑛔𑛕𑛖𑛗𑛘𑛙"}
+            radix:int{10}
+        }
         mymrshan{
             algorithmic:int{0}
             desc{"႐႑႒႓႔႕႖႗႘႙"}
@@ -296,6 +326,11 @@ numberingSystems:table(nofallback){
         mymrtlng{
             algorithmic:int{0}
             desc{"꧰꧱꧲꧳꧴꧵꧶꧷꧸꧹"}
+            radix:int{10}
+        }
+        nagm{
+            algorithmic:int{0}
+            desc{"𞓰𞓱𞓲𞓳𞓴𞓵𞓶𞓷𞓸𞓹"}
             radix:int{10}
         }
         newa{
@@ -313,6 +348,11 @@ numberingSystems:table(nofallback){
             desc{"᱐᱑᱒᱓᱔᱕᱖᱗᱘᱙"}
             radix:int{10}
         }
+        onao{
+            algorithmic:int{0}
+            desc{"𞗱𞗲𞗳𞗴𞗵𞗶𞗷𞗸𞗹𞗺"}
+            radix:int{10}
+        }
         orya{
             algorithmic:int{0}
             desc{"୦୧୨୩୪୫୬୭୮୯"}
@@ -321,6 +361,11 @@ numberingSystems:table(nofallback){
         osma{
             algorithmic:int{0}
             desc{"𐒠𐒡𐒢𐒣𐒤𐒥𐒦𐒧𐒨𐒩"}
+            radix:int{10}
+        }
+        outlined{
+            algorithmic:int{0}
+            desc{"𜳰𜳱𜳲𜳳𜳴𜳵𜳶𜳷𜳸𜳹"}
             radix:int{10}
         }
         rohg{
@@ -371,6 +416,11 @@ numberingSystems:table(nofallback){
         sund{
             algorithmic:int{0}
             desc{"᮰᮱᮲᮳᮴᮵᮶᮷᮸᮹"}
+            radix:int{10}
+        }
+        sunu{
+            algorithmic:int{0}
+            desc{"𑯰𑯱𑯲𑯳𑯴𑯵𑯶𑯷𑯸𑯹"}
             radix:int{10}
         }
         takr{

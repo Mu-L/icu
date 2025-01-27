@@ -39,17 +39,16 @@ and use it for future testing.
 2.  The target generates test data and runs some serialization test cases.
 3.  Once you confirm the test runs clean, copy
     `out/serialTestData/ICU_<version>` to
-    `main/tests/core/src/com/ibm/icu/dev/test/serializable/data/ICU_<version>`.
+    `main/core/src/test/resources/com/ibm/icu/dev/test/serializable/data/ICU_<version>`.
 
 ---
 
 ## Release ticket
 
 After every milestone (GA / RC / Milestone-N) is completed, create a new release
-ticket in ICU Jira, then add the ticket link to the next
-[milestone](http://bugs.icu-project.org/trac/roadmap). The release ticket is
-used for BRS tasks, such as version update, tagging new version, merging post RC
-fixes from trunk and others.
+ticket in ICU Jira.
+The release ticket is used for BRS tasks, such as version update, tagging new version,
+merging post RC fixes from trunk and others.
 
 ---
 
